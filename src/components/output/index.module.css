@@ -1,0 +1,14 @@
+.calc-main {
+    margin: auto;
+    width: 450px;
+    text-align: center;
+}
+
+input[type="text"] {
+    height: 60px;
+    font-size: 20px;
+}
+
+input {
+    border: none;
+}
