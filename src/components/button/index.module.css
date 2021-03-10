@@ -4,6 +4,7 @@ button {
     box-shadow: 0px 2px 0px #9d3131,
         0px 0px 0px #c73f3f;
     color: white;
+    font-size: 30px;
 }
 
 button:focus {
@@ -25,6 +26,9 @@ input[type="text"] {
 
 input {
     border: none;
+    width: 95%;
+    margin: 30px auto;
+    box-shadow: 0px 0px 50px 10px rgba(255,255,255,0.75);
 }
 
 #clear {
