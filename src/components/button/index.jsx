@@ -1,13 +1,13 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Styles from "./index.module.css";
 
 function Button(props) {
     const operators = ['+', '-', '*', '/'];
     const [result, setResult] = useState("");
-    const {callBack}=props
+    const { callBack } = props
     useEffect(() => {
         callBack(result)
-      },[result]);
+    }, [result]);
     function IsOperator(input) {
         if (operators.includes(input))
             return true
@@ -22,26 +22,61 @@ function Button(props) {
             setResult(result.concat(e.target.name));
         }
     }
-
+    function calc(e) {
+        if (result.length > 0 && !isNaN(result)) {
+            try {
+                switch (e.target.name) {
+                    case 'sin':
+                        setResult(Math.sin(result))
+                        break;
+                    case 'cos':
+                        setResult(Math.cos(result))
+                        break;
+                    case 'tan':
+                        setResult(Math.tan(result))
+                        break;
+                    case '^2':
+                        setResult(result * result)
+                }
+            } catch (error) {
+                setResult("INVALID INPUT");
+            }
+        }
+        else {
+            setResult("")
+        }
+    }
     function calculate() {
         try {
             setResult(eval(result).toString());
         } catch (error) {
             setResult("INVALID INPUT");
         }
-        props.callBack(result)  
+        props.callBack(result)
     }
 
     return (
         <div className={Styles.keypad}>
-            <button id={Styles.clear} onClick={()=>{setResult("");props.callBack(result)}}>
+            <button id={Styles.clear} onClick={() => { setResult(""); }}>
                 Clear
         </button>
-            <button id={Styles.backspace} onClick={()=>{setResult(result.slice(0,-1));props.callBack(result)}}>
+            <button id={Styles.backspace} onClick={() => { setResult(result.slice(0, -1)); }}>
                 C
         </button>
             <button name="+" onClick={handleClick}>
                 +
+        </button>
+            <button name="sin" onClick={calc}>
+                Sin
+        </button>
+            <button name="cos" onClick={calc}>
+                Cos
+        </button>
+            <button name="tan" onClick={calc}>
+                Tan
+        </button>
+            <button name="^2" onClick={calc}>
+                x2
         </button>
             <button name="7" onClick={handleClick}>
                 7

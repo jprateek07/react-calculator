@@ -10,7 +10,7 @@ const Output = (props) => {
     return (
         <div className={Styles['calc-main']}>
             <form>
-                <input type="text" value={output} placeholder="OUTPUT" readOnly />
+                <input type="text" value={output} placeholder="0" readOnly />
             </form>
             <Button callBack={handleClick} />
         </div>
